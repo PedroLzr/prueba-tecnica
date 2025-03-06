@@ -42,7 +42,6 @@ replay_pid*
 .idea/
 *.iml
 *.iws
-out/
 
 # Ignore Eclipse project files
 .project
