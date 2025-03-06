@@ -1,0 +1,29 @@
+logging:
+  level:
+    root: INFO
+    com.pedrosanz.pruebatec: DEBUG
+spring:
+  web:
+    resources:
+      add-mappings: true
+  application:
+    name: pruebatec
+  datasource:
+    url: jdbc:h2:mem:pricingdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  sql:
+    init:
+      mode: always

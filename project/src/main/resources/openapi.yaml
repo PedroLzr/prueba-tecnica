@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: E-commerce Pricing Service
+  version: 1.0.0
+  description: API para consultar precios de productos en un rango de fechas.
+
+paths:
+  /api/v1/prices:
+    get:
+      tags:
+        - Price
+      summary: Obtener precio aplicable
+      description: Devuelve el precio aplicable para un producto, cadena y fecha dada.
+      parameters:
+        - name: applicationDate
+          in: query
+          required: true
+          description: Fecha de aplicación en formato ISO 8601. Obligatoria.
+          schema:
+            type: string
+            format: date-time
+        - name: productId
+          in: query
+          required: true
+          description: Identificador del producto. Obligatorio y debe ser mayor a 0.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+        - name: brandId
+          in: query
+          required: true
+          description: Identificador de la cadena (marca). Obligatorio y debe ser mayor a 0.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Precio encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceResponseDTO'
+              example:
+                productId: 35455
+                brandId: 1
+                priceList: 1
+                startDate: "2020-06-14T00:00:00"
+                endDate: "2020-12-31T23:59:59"
+                price: 35.50
+                currency: EUR
+        '404':
+          description: No se encontró un precio aplicable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDTO'
+              example:
+                status: 404
+                message: No se encontró un precio aplicable para los parámetros proporcionados
+        '400':
+          description: Parámetros inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDTO'
+              example:
+                status: 400
+                message: La fecha de aplicación es obligatoria
+
+components:
+  schemas:
+    PriceResponseDTO:
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int64
+          description: Identificador del producto.
+        brandId:
+          type: integer
+          format: int64
+          description: Identificador de la cadena (marca).
+        priceList:
+          type: integer
+          description: Lista de precios aplicada.
+        startDate:
+          type: string
+          format: date-time
+          description: Fecha de inicio del precio aplicado.
+        endDate:
+          type: string
+          format: date-time
+          description: Fecha de fin del precio aplicado.
+        price:
+          type: number
+          format: decimal
+          description: Precio aplicado.
+        currency:
+          type: string
+          description: Moneda del precio aplicado.
+      example:
+        productId: 35455
+        brandId: 1
+        priceList: 1
+        startDate: "2020-06-14T00:00:00"
+        endDate: "2020-12-31T23:59:59"
+        price: 35.50
+        currency: EUR
+
+    ErrorResponseDTO:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: Código de estado HTTP del error.
+        message:
+          type: string
+          description: Detalle del error.
+      example:
+        status: 400
+        message: La fecha de aplicación es obligatoria
