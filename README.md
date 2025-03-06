@@ -80,6 +80,16 @@ Este perfil requiere también que la aplicación esté en ejecución (ejecuta lo
 
 ---
 
+## Reporte de cobertura de pruebas
+
+Para generar el reporte de cobertura de JaCoCo, tenemos que ejecutar:
+
+```sh
+mvn clean verify
+```
+
+**Se nos generará un archivo en:** target/site/jacoco/index.html
+
 ## Más detalles
 
 ### Arquitectura del Proyecto
@@ -127,3 +137,4 @@ Y el esquema de la tabla en `src/main/resources/schema.sql`
 4. **RestAssured**: Para testing e2e. Permite pruebas e2e sencillas y efectivas para validar la integración y funcionalidad de APIs REST.
 5. **Docker**: Se incluyó un Dockerfile para garantizar la portabilidad y facilitar el despliegue en cualquier entorno.
 6. **OpenApi Generator**: Se ha utilizado OpenApi para generar automáticamente código para el funcionamiento de la api.
+7. **JaCoCo**: Se ha integrado para medir la cobertura de pruebas.
