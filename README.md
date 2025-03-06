@@ -1,10 +1,9 @@
 # Prueba Técnica
-Prueba técnica para vacante de Lider Técnico
+Prueba técnica para vacante de Lider Técnico.
 
 ## **Ejecutar en Docker**
 
 Los siguientes comandos se deben ejecutar desde la ruta root del repositorio.
-
 
 1. Construir la imagen:
 ```bash
@@ -41,11 +40,11 @@ docker run -it --rm -v $(pwd)/project:/app -w /app maven:3.9.5-eclipse-temurin-2
 ```
 
 *Para que los tests E2E desde un contenedor puedan comunicarse con la aplicación en otro, sería necesaria una red personalizada en Docker, ya que los contenedores no comparten localhost.
-Para evitar crear una red personalizada, a continuación se muestra como ejecutar todos los tests con mvn.
+Para evitar crear una red personalizada, a continuación se muestra como ejecutar todos los tests con mvn (sin usar Docker).
 
 ### Sin Docker:
 
-Ejecutar estos comandos desde la ruta del proyecto de maven (`project`)
+Ejecutar estos comandos desde la ruta del proyecto de maven (`project`).
 
 **Ejecutar tests unitarios:**
 
@@ -76,9 +75,7 @@ mvn test -Pe2e-tests
 ```bash
 mvn test -Pall-tests
 ```
-Este perfil requiere también que la aplicación esté en ejecución (ejecuta los tests e2e)
-
----
+Este perfil requiere también que la aplicación esté en ejecución (porque ejecuta también los tests e2e)
 
 ## Reporte de cobertura de pruebas
 
@@ -88,7 +85,7 @@ Para generar el reporte de cobertura de JaCoCo, tenemos que ejecutar:
 mvn clean verify
 ```
 
-**Se nos generará un archivo en:** target/site/jacoco/index.html
+**Se nos generará un archivo con los datos de la cobertura en:** target/site/jacoco/index.html
 
 ## Más detalles
 
@@ -121,8 +118,6 @@ El proyecto utiliza **H2 Database** como base de datos en memoria. Esto simplifi
 
 La base de datos se inicializa automáticamente con datos de ejemplo para cumplir los requisitos de la prueba técnica. Se puede encontrar el script de inicialización en `src/main/resources/data.sql`.
 Y el esquema de la tabla en `src/main/resources/schema.sql`
-
-### Pruebas
 
 ### **Tipos de Tests**
 1. **Tests Unitarios**: Validan la lógica de negocio de manera aislada (clase PriceService).
