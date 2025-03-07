@@ -1,7 +1,7 @@
 # Prueba Técnica
 Prueba técnica para vacante de Lider Técnico.
 
-## **Ejecutar en Docker**
+## Ejecutar en Docker
 
 Los siguientes comandos se deben ejecutar desde la ruta root del repositorio.
 
@@ -119,7 +119,7 @@ El proyecto utiliza **H2 Database** como base de datos en memoria. Esto simplifi
 La base de datos se inicializa automáticamente con datos de ejemplo para cumplir los requisitos de la prueba técnica. Se puede encontrar el script de inicialización en `src/main/resources/data.sql`.
 Y el esquema de la tabla en `src/main/resources/schema.sql`
 
-### **Tipos de Tests**
+### Tipos de Tests
 1. **Tests Unitarios**: Validan la lógica de negocio de manera aislada (clase PriceService).
 2. **Tests Funcionales**: Validan los endpoints REST simulando solicitudes HTTP (clase PriceControllerTest).
 3. **Tests End-to-End (E2E)**: Verifican el flujo completo desde la API hasta la base de datos (clase PriceE2ETest).
@@ -133,3 +133,4 @@ Y el esquema de la tabla en `src/main/resources/schema.sql`
 5. **Docker**: Se incluyó un Dockerfile para garantizar la portabilidad y facilitar el despliegue en cualquier entorno.
 6. **OpenApi Generator**: Se ha utilizado OpenApi para generar automáticamente código para el funcionamiento de la api.
 7. **JaCoCo**: Se ha integrado para medir la cobertura de pruebas.
+8. **GitHub Actions**: Se ha configurado GitHub Actions para ejecutar pruebas unitarias y funcionales de manera automática en cada push a la rama main, garantizando la calidad del código y la integración continua.

@@ -1,0 +1,26 @@
+name: Ejecutar tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: maven:3.9.5-eclipse-temurin-21
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Ejecutar tests unitarios
+        run: mvn test -Punit-tests
+        working-directory: project
+
+      - name: Ejecutar tests funcionales
+        run: mvn test -Pfunctional-tests
+        working-directory: project
