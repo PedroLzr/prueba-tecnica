@@ -27,13 +27,14 @@ public class JpaPriceRepository implements PriceRepository {
 
     @Override
     public Optional<Price> findHighestPriorityPrice(LocalDateTime applicationDate, Long productId, Long brandId) {
-        log.debug("Ejecutando consulta para obtener el precio más prioritario con parámetros: productId: {}, brandId: {}, applicationDate: {}", productId, brandId, applicationDate);
+        log.debug("Ejecutando findHighestPriorityPrice: productId: {}, brandId: {}, applicationDate: {}", productId, brandId, applicationDate);
 
         String jpql = "SELECT p FROM PriceEntity p " +
                 "WHERE p.productId = :productId " +
                 "AND p.brandId = :brandId " +
                 "AND :applicationDate BETWEEN p.startDate AND p.endDate " +
                 "ORDER BY p.priority DESC";
+
         TypedQuery<PriceEntity> query = entityManager.createQuery(jpql, PriceEntity.class);
         query.setParameter("applicationDate", applicationDate);
         query.setParameter("productId", productId);

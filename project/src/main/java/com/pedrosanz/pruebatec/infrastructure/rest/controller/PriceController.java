@@ -29,7 +29,7 @@ public class PriceController implements PriceApi {
             @RequestParam("productId") Long productId,
             @RequestParam("brandId") Long brandId) {
 
-        log.info("Llamada a pricesGet (GET /api/v1/prices) con parámetros: applicationDate={}, productId={}, brandId={}",
+        log.info("Llamada a apiV1PricesGet con parámetros: applicationDate={}, productId={}, brandId={}",
                 applicationDate, productId, brandId);
 
         Price price = priceService.getApplicablePrice(
