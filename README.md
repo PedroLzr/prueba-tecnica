@@ -84,15 +84,15 @@ mvn test -Pall-tests
 ```
 Este perfil requiere también que la aplicación esté en ejecución (porque ejecuta también los tests e2e)
 
-## Reporte de cobertura de pruebas
+## Reporte de cobertura de tests
 
-Para generar el reporte de cobertura de JaCoCo, tenemos que ejecutar:
+Para generar el reporte de cobertura de JaCoCo, podemos ejecutar:
 
 ```sh
 mvn clean verify
 ```
 
-**Se nos generará un archivo con los datos de la cobertura en:** target/site/jacoco/index.html
+**Se nos generará un archivo con los datos de la cobertura en:** `target/site/jacoco/index.html`
 
 # Más detalles
 
